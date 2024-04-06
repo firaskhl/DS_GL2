@@ -1,0 +1,17 @@
+vagrant init 
+nano Vagrantfile   
+# you find Vagrantfile here
+vagrant up 
+vagrant ssh 
+
+# install git and docker 
+
+git config --global user.name "waeljn"
+git config --global user.email "w_jendoubi@outlook.com"
+git clone  https://github.com/firaskhl/DS_GL2
+
+#update code create docker file  
+
+git add . 
+git commit -m "work needed "
+git push 

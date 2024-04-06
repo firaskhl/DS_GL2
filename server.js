@@ -36,6 +36,19 @@ app.delete('/tasks/:id', async (req, res) => {
     res.status(204).send();
 });
 
+app.patch('tasks/:id',async (req,res)=>{
+	const {id} = req.params;
+	const payload = req.body;
+	const task = await Task.findById(id);
+	if(task){
+		task.isCompleted = payload.isCompleted;
+		task.update()
+		res.status(200).json({"error":false , "message":"the task was updated succesfuly"})
+	}else{
+		res.status(404).json({"message":"task not found"})
+	}
+} )
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
