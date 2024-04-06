@@ -30,6 +30,12 @@ app.put('/tasks/:id', async (req, res) => {
     res.json(task);
 });
 
+app.patch('/tasks/:id/isCompleted', async (req, res) => {
+    const { id } = req.body;
+    const task = await Task.findByIdAndUpdate(id, { isCompleted : true }, { new: true }); 
+    res.json(task);
+});
+
 app.delete('/tasks/:id', async (req, res) => {
     const { id } = req.params;
     await Task.findByIdAndDelete(id);
